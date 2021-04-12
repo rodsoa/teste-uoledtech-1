@@ -6,31 +6,31 @@ namespace App;
 
 class NumerosPrimos
 {
-    public function Calcular(int $limite): array
+    public function calcular(int $limite): array
     {
         $sequencia = range(2, $limite);
         $numerosPrimos = array_filter(
             $sequencia,
             function ($numero) {
-                return $this->IsPrimo($numero, --$numero);
+                return $this->isPrimo($numero, --$numero);
             }
         );
 
         return array_values($numerosPrimos);
     }
 
-    private function IsPrimo(
+    private function isPrimo(
         int $numero,
         int $divisor
     ): bool {
         if ($divisor < 2) {
-            return TRUE;
+            return true;
         }
 
         if ($numero % $divisor === 0) {
-            return FALSE;
+            return false;
         }
 
-        return $this->IsPrimo($numero, --$divisor);
+        return $this->isPrimo($numero, --$divisor);
     }
 }
